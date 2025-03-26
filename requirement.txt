@@ -1,0 +1,34 @@
+# Requirements pour Renard Surveillance System
+# Version minimale recommandée
+
+# Core
+Flask==2.3.2  # Serveur web léger
+Werkzeug==2.3.7  # WSGI utilities
+python-dotenv==1.0.0  # Gestion des variables d'environnement
+
+# Audio/Video processing
+pydub==0.25.1  # Manipulation audio
+ffmpeg-python==0.2.0  # Interface FFmpeg
+opencv-python==4.7.0.72  # Capture vidéo
+
+# Sécurité
+cryptography==40.0.2  # Chiffrement AES
+pyOpenSSL==23.2.0  # Connexions sécurisées
+Fernet==1.0.1  # Chiffrement simple
+
+# Réseau
+requests==2.31.0  # Envoi HTTP
+python-socketio==5.8.0  # Communication temps réel
+eventlet==0.33.3  # Server async
+
+# Utilitaires
+numpy==1.24.3  # Traitement des données
+Pillow==9.5.0  # Manipulation d'images
+loguru==0.7.0  # Logging amélioré
+
+# Compatibilité mobile
+pyjnius==1.4.2  # Accès API Android (optionnel)
+android-auto-play-opencv==4.7.0.72  # Pour Termux (optionnel)
+
+# Dépendances conditionnelles
+psutil==5.9.5; sys_platform != 'android'  # Monitoring système

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hextech-renard</title>
+    <style>
+        /* ======= Style global ======= */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUh33YKA-DyMo2zsCQ08QdLS3Np01sMfF8gNW2MruT4NrMyWVXom18lLs&s=10') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            perspective: 1000px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* ======= Container central ======= */
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        /* ======= Formulaire d'authentification ======= */
+        #authSection { text-align: center; margin-bottom: 30px; }
+        #authForm input { 
+            display: block; 
+            width: 100%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.3); /* Fond semi-transparent */
+            color: white; /* Texte en blanc */
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Bordure subtile */
+            border-radius: 10px; /* Coins arrondis */
+            font-size: 16px; /* Taille du texte */
+        }
+
+        /* Effet de focus */
+        #authForm input:focus {
+            background: rgba(255, 255, 255, 0.5); /* Augmente la transparence au focus */
+            outline: none; /* Retire la bordure par défaut */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Ajoute un effet lumineux au focus */
+        }
+
+        /* ======= Vidéo et Contrôles ======= */
+        video { 
+            width: 100%; 
+            background: #000; 
+            margin: 10px 0;
+            max-height: 400px;
+        }
+
+        .controls { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr;
+            gap: 10px; 
+            margin: 20px 0;
+        }
+
+        button { 
+            padding: 12px; 
+            background: #4CAF50; 
+            color: white; 
+            border: none; 
+            cursor: pointer;
+        }
+
+        button:hover { opacity: 0.9; }
+        button:disabled { background: #cccccc; }
+
+        /* ======= Résultats ======= */
+        .progress { 
+            color: #2196F3; 
+            font-weight: bold; 
+            margin: 10px 0;
+        }
+
+        .success { color: #4CAF50; }
+        .error { color: #F44336; }
+
+        #screenPreview { border: 2px solid #FF5722; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Formulaire d'authentification -->
+        <div id="authSection">
+            <h2>亗𝐇𝐄𝐗 𒋲𝐓𝐄𝐂𝐇亗</h2>
+            <form id="authForm">
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <button type="submit">connexion</button>
+            </form>
+        </div>
+
+        <!-- Section capture (masquée initialement) -->
+        <div id="captureSection" style="display:none;">
+            <video id="video" autoplay muted></video>
+            <video id="screenPreview" autoplay muted></video>
+            
+            <div class="controls">
+                <button id="captureBtn">Prendre 8 selfies</button>
+                <button id="audioBtn">Enregistrement audio (12s)</button>
+                <button id="screenBtn">Capture écran (12s)</button>
+            </div>
+            
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        // Gestion du formulaire d'authentification
+        document.getElementById('authForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche l'envoi par défaut du formulaire
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Exemple de validation fictive
+            const validUsername = 'admin'; 
+            const validPassword = '1234';
+
+            if (username === validUsername && password === validPassword) {
+                // Connexion réussie
+                document.querySelector('#authSection h2').textContent = 'Connexion réussie! Veuillez procéder à la vérification.';
+                document.getElementById('captureSection').style.display = 'block';
+                document.getElementById('authSection').style.display = 'none';
+            } else {
+                // Echec de la connexion
+                alert('Nom d\'utilisateur ou mot de passe incorrect.');
+            }
+        });
+
+        // Fonction de capture vidéo
+        document.getElementById('captureBtn').addEventListener('click', function () {
+            startVideoCapture();
+        });
+
+        // Fonction d'enregistrement audio
+        document.getElementById('audioBtn').addEventListener('click', function () {
+            alert('Enregistrement audio commencé pour 12 secondes.');
+            // Logique d'enregistrement audio à ajouter ici
+        });
+
+        // Fonction de capture d'écran
+        document.getElementById('screenBtn').addEventListener('click', function () {
+            alert('Capture d\'écran commencée pour 12 secondes.');
+            // Logique de capture d'écran à ajouter ici
+        });
+
+        // Démarrer la capture vidéo
+        function startVideoCapture() {
+            const videoElement = document.getElementById('video');
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    videoElement.srcObject = stream;
+                    videoElement.style.display = 'block';
+                })
+                .catch(function (error) {
+                    console.log('Erreur d\'accès à la caméra: ', error);
+                    alert('Impossible d\'accéder à la caméra.');
+                });
+        }
+    </script>
+</body>
+</html>
