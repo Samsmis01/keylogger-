@@ -89,11 +89,11 @@ class SecureSurveillance:
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝
 -------------------------------------------------------
    ╔═════════════════════════════════════════════╗
-   ║       [✓] TOOL NAME : RENARD                                            
-   ║       [✓] GITHUB : SAMSMIS01                
-   ║       [✓] TELEGRAM : https://t.me/hextechcar  ║
-   ║       [✓] INSTAGRAM : SAMSMIS01
-   ║       [✓] EMAIL : hextech243@gmail.com         ╚═══════════════════════════════════════════════╝
+   ║       [✓] NOM DU HACK : RENARD 🦊                                           
+   ║       [✓] GITHUB : Samsmis01               
+   ║       [✓] TELEGRAM : https://t.me/hextechcar       ║
+   ║       [✓] EMAIL : hextech243@gmail.com        
+   ╚═════════════════════════════════════════ ═══╝
 --------------------------------------------------------
 """
         print(f"\033[1;32m{banner}\033[0m")
